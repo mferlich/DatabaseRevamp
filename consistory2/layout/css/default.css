@@ -1,0 +1,128 @@
+/* many float left, padding and margin 0 */
+body, form, img, .small-text, .page-list *, .quicksearch p, .user-filters table p {margin: 0; padding: 0;}
+* {color: #000;}
+a {color: blue;}
+/* ELEMENT SELECTORS */
+body {background-color: #ffc;}
+h1, h2, caption {padding: 5px 0 5px 0; margin: 0; text-align: center; font-size: 105%; font-weight: bold; clear: both;}
+h1 {font-size: 125%;}
+img {margin: 0 3px 0 3px; border: 0px;}
+
+form p {margin: 0.5em;}
+
+/* TEXT  */
+.center, #nav {text-align: center;}
+#nav, #warn_changes {width: 100%; height: 2em;}
+#warn_changes {text-align: center; font-weight: bold; background-color: #fcc; padding:0; margin:0; float: left; display: none;}
+#sql-help, .small-text {font-size: 80%;}
+
+#nav, .quicksearch, .quicksearch p {background-color: #ffc;}
+.highlight, .login, .fullsearch, .action_buttons, .disabled {background-color: #eee;}
+.header {background-color: #ccc;}
+.user-error, .user-error * {background-color: #fcc; text-align: center; margin:0;}
+.warning {color: 000; text-align:center; font-weight: bold; background-color: #ff1493; width: 100%; margin: 0; padding: .25em 0 .25em 0;}
+.adv-search {text-decoration: none; font-variant: small-caps; font-weight: bold;}
+.nav-label {margin: 0 .25em 0 .5em; font-weight: bold; }
+#nav a {text-decoration: none;}
+
+/* FORMS */
+
+/* COMMON CLASSES */
+/* set size of input boxes. */
+.very-short {width: 3em;}
+.short {margin: 0; width: 7em;}
+.medium {width: 13em;}
+.long {width: 20em;}
+
+.labelcol, .datacol {float: left; padding: 0; margin: 5px; width: 7em; clear: left;}
+.datacol {width: 13em; clear: right;}
+
+/* CLASS-SPECIFIC FORM SELECTORS */
+.page_list {float: left; padding: 0 0 0 5px; margin: 0; width: 100%;}
+
+.quicksearch {float: left; padding: 5px 0; width: 100%;}
+.quicksearch p {float: left; width: 66%;}
+.quicksearch p.left {padding-left: 1%; width: 33%;}
+
+#person_form {padding: 5px 1em 1em; clear: both; color: #000; background-color : #d6d3ce;}
+.action_buttons {padding: 5px; margin: 5px; clear: left; text-align: center; border : 1px solid Black;}
+.action_buttons input {margin: 5px 5px 3px; text-align: center;}
+.delete_button {color: Black; background-color: LightGrey;}
+.submit_button {font-weight: bold; color: Black; background-color: LightGreen;}
+.leftpane {float: left;}
+.leftpane p {float: left; padding:0; margin: 0; clear: left;}
+#annotation_title * {margin:0;padding:0;display:inline-block;}
+#annotation_title h4 {float:left; width:7em; margin-left:5em;}
+#annotation_title p {font-size:75%; display:block;}
+
+.user-settings {float: left; margin: 0 0 0 2%; width: 37%; clear: none;}
+.user-settings span {float: left; padding: 0 5px 0 0; width: 8em;}
+.user-settings input {float: left; padding: 0 0 0 2px; margin: 3px 5px 0; width: 8em;}
+.user-settings input.short {float:none; width: 3em;}
+.user-settings p, .user-settings .submit {padding: 5px; margin: 15px 5px; clear: both;}
+.user-settings h3 {font-size:1.1em; padding:0; margin:30px 0 -18px 0;}
+
+.fullsearch p {float: left; padding: 5px; margin: 0;}
+.fullsearch p.short {width: 5em;}
+.fullsearch div {clear: both;}
+.fullsearch textarea {margin: 0; width: 80%; height: 10em;}
+
+.login {padding: 10px; width: 60%; position: absolute; left: 20%; top: 50px;}
+
+/* TABLE STYLES */
+.user-filters {float: right; margin: 0 2% 0 2%; width: 55%;}
+
+.results {clear: both;}
+.results td, table.results th {white-space: nowrap;}
+
+.reconcile {margin: 2em 0 0 0; width: 100%;}
+.reconcile h4 {margin: 0;}
+.reconcile td {padding: 5px 10px; margin: 0;}
+.reconcile td.left {text-align: right;}
+.reconcile td.center {text-align: center; background-color: #ddd;}
+
+/* VERSIONING */
+
+td.diff-context {color: black; background-color: white;}
+ins.diffchange {font-weight:bold; background-color:lightgreen;}
+del.diffchange {text-decoration:strikethrough; background-color:pink;}
+div.versionCompare {
+  background-color: white;
+  text-align:center;
+}
+
+div.versionCompare {
+  width: 100%;
+  background-color: white;
+}
+
+div.versionCompare table {
+  margin:auto;
+  border: 1px solid black;
+}
+
+div.versionCompare table table {
+  border: none;
+}
+div.versionCompare .header {
+  font-weight:bold; font-size: 115%;
+  }
+div.versionCompare td {
+  padding: 5px 1em 5px 1em;
+  border: 1px solid black;
+  }
+
+div.versionCompare td td {
+  padding: 5px 1em 5px 1em;
+  border: none;
+  }
+
+div.versionCompare td.colHeader {
+  font-weight: bold;
+}
+
+div.versionCompare tr.even, div.versionCompare tr.even td {
+  background-color: #ccc;
+}
+
+.helpNote {font-weight:normal; font-size:90%;}

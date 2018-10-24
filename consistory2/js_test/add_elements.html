@@ -1,0 +1,344 @@
+<html>
+	<head>
+		<title>Test Add/Remove HTML Elements JavaScript</title>
+		
+		<style type="text/css">  
+			.divcrime 
+			{ 
+				border: 1px solid rgb(153, 0, 0); 
+				background-color: rgb(255, 255, 204); 
+				display: table-cell;
+				
+			} 
+			
+			.closebox 
+			{ 
+				border: 1px solid rgb(153, 0, 0); 
+				background-color: rgb(204, 204, 204); 
+				max-width: 10pt; 
+				max-height: 10pt; 
+				font-size: 10pt; 
+				text-align: center; 
+				float: right; 
+				position: relative; 
+				font-family: Arial,Helvetica,sans-serif;
+			}
+		</style>
+		
+		<script type="text/javascript">
+		<!--
+		
+		function addEvent()
+		{
+			var ni   =  document.getElementById('myDiv'   );
+			var numi =  document.getElementById('theValue');
+			var num  = (document.getElementById("theValue").value -1)+ 2;
+			numi.value = num;
+			var divIdName = "my"+num+"Div";
+			var newdiv = document.createElement('div');
+			newdiv.setAttribute("id",divIdName);
+			newdiv.innerHTML = "Element Number "+num+" has been added! <a href=\"javascript:;\" onclick=\"removeEvent(\'"+divIdName+"\')\">Remove the div &quot;"+divIdName+"&quot;</a>";
+			ni.appendChild(newdiv);
+		}
+
+		function removeEvent(divNum)
+		{
+			var d = document.getElementById('myDiv');
+			var olddiv = document.getElementById(divNum);
+			d.removeChild(olddiv);
+		}
+		
+		
+		
+		
+		function addEvent2(anno)
+		{
+			if( anno == undefined )
+				anno = "Hello World";
+		
+			var ni   =  document.getElementById('myDiv2'   );
+			var numi =  document.getElementById('theValue2');
+			var num  = (document.getElementById("theValue2").value -1)+ 2;
+			numi.value = num;
+			var divIdName = "my"+num+"Div2";
+			var newdiv = document.createElement('div');
+			newdiv.setAttribute("id",divIdName);
+			newdiv.setAttribute("class", "divcrime");
+			newdiv.innerHTML = 
+				"<div class=\"closebox\"><a href=\"javascript:;\" onclick=\"removeEvent2(\'"+divIdName+"\')\">X</a></div>" +
+				"<select name=\"cmbCrimeTag\">" +
+					"<option value=\"1\">One</option>" +
+					"<option value=\"2\">Two</option>" +
+					"<option value=\"3\">Three</option>" +
+					"<option value=\"4\">Four</option>" +
+				"</select>" +
+				"<br/>" +
+				"<textarea name=\"annotation\" rows=\"10\" cols=\"100\">" + anno + "</textarea>";
+			
+			ni.appendChild(newdiv);
+		}
+
+		function removeEvent2(divNum)
+		{
+			var d = document.getElementById('myDiv2');
+			var olddiv = document.getElementById(divNum);
+			d.removeChild(olddiv);
+		}
+		
+		function splitAnnotation()
+		{
+			var anno = document.getElementById("annotation").value;
+			// alert(anno);
+			addEvent2( anno );
+		}
+		
+		function addUsingSelection()
+		{
+			var txtAnno   = document.getElementById('annotation');
+			var startPos  = txtAnno.selectionStart;
+			var endPos    = txtAnno.selectionEnd;
+			if( startPos == endPos)
+			{
+				alert("Please select some text from the text box.");
+			}
+			var txt = txtAnno.value.substring(startPos, endPos);
+			addEvent2( txt );
+			
+			return;
+		}
+		
+		
+		function increaseWidth()
+		{
+			var txtAnno   = document.getElementById('annotation');
+			var cc = txtAnno.cols;
+			txtAnno.cols = cc + 10;
+		}
+		
+		function decreaseWidth()
+		{
+			var txtAnno   = document.getElementById('annotation');
+			var cc = txtAnno.cols;
+			if( cc > 10 )
+				txtAnno.cols = cc - 10;
+			else
+				txtAnno.cols = 1;
+		}
+		
+		function increaseHeight()
+		{
+			var txtAnno   = document.getElementById('annotation');
+			var rr = txtAnno.rows;
+			txtAnno.rows = rr + 5;
+		}
+		
+		function decreaseHeight()
+		{
+			var txtAnno   = document.getElementById('annotation');
+			var rr = txtAnno.rows;
+			if( rr > 10 )
+				txtAnno.rows = rr - 5;
+			else
+				txtAnno.rows = 1;
+		}
+		//-->
+		</script>
+	</head>
+
+	<body onKeyDown="keyDown()">
+		
+		<input type="hidden" value="0" id="theValue" />
+		<p><a href="javascript:;" onclick="addEvent();">Add Some Elements</a></p>
+		<div id="myDiv"></div>
+		
+		Little Red Riding Hood
+		<br/>
+		<form method="post" action="" name="formCopyArea" onsubmit="copyTextHere();">
+		
+<br/>
+Width:<input type="button" value="+" onclick="increaseWidth();">
+<input type="button" value="-" onclick="decreaseWidth();">
+&nbsp;Height:<input type="button" value="+" onclick="increaseHeight();">
+<input type="button" value="-" onclick="decreaseHeight();">
+<br/>
+<textarea   name="annotation" id="annotation" cols="100" rows="35" tabindex="14">There are two Martin Lechiere in the LH, both in 1559, but neither seems likely to be this:
+--LH I, p. 148 (16 janvier 1559): Martin Leschiere, de Luny en Charlois.
+--LH I, p. 158 (24 avril 1559): Martin filz de feu Ayme Lechiere, de Lulliez oultre Arve, chappuis.
+
+
+----------------1553---------------
+
+~~~PAILLARDISE
+
+&gt;R.Consist. 8, f. 26v (25 mai 1553): Martin Lechere le grieur.
+    Remonstré dempuis quant il est residant en ceste ville, dictz qu&#039;a environ sept ans.  Remonstré s&#039;il ne fust pas trouvé ung jour, y a environ trois semannes, par le filz de Anri Gon, hoste du Croyssant au Mollard, et s&#039;il n&#039;eust pas parrolles avec ledit filz que les trouvatz, luy et une servante, enseree dans ung estrable.  Y nye, se submettant a rygour qu&#039;il se conste.  Advis: que pour jeudi y retorne ici et qu&#039;on apelle le filz de Henry Gon et les tesmoings qu&#039;il nommera de luy quant l&#039;on le rapellera.
+
+  --&gt;R.Consist. 8, f. 27v (1 juin 1553): Pierre, filz de Anry Gon, contre Martin le grieur.
+    Depose qu&#039;on sammedi y volloyt mettre une jument a ung paysant en leur estable.  Trouvast ledit estable serré par dedans a une barre, et luy ouvrist ledit grieur, que luy ditz qu&#039;il accoustroit son pinseaux; et incontinent apres sortit une fille qu&#039;estoit enseree avec luy et s&#039;en alla.  Luy dist, «T&#039;en vast-tu, Pernette», et ne la cognoyt.  A eu entendu qu&#039;elle a eu demouré chez le gagier, et ouy ung cousturier quant ledit grieur se combatoyt a luy.  Advis: que ledit garson et le cousturier boyteux nommé Vanet et ledit Martin pour jeudi.
+
+  --&gt;R.Consist. 8, f. 28 (8 juin 1553): Maistre Bertollomy Vanier, cousturier, contre Martin le grieur.
+    Depose que luy estant entré dans le Croyssant, vist que le garson dudit Croissant tabutoyt la porte de l&#039;estable qu&#039;on avoit serré en dedans, et vist que ledit grieur ouvrist, et dictz pourquoy il s&#039;estoit enserré avec ladicte fille ou femme.  Ledit grieur dictz que ladicte femme ou fille y voulloyt bien.
+
+~~~OPPOSITION AU CONSISTOIRE
+  --&gt;R.Consist. 8, f. 33v (22 juin 1553): Advis contre Martin le Grieur comme rebelle; l&#039;on en advertisse Messieurs.
+
+  --&gt;R.Consist. 8, f. 36 (29 juin 1553): Martin le Grieur.
+    Remonstré qu&#039;il est deshobeyssant et qu&#039;il c&#039;est prover par tesmongs.  Y nye toujours par espres.  Advis: qu&#039;on le ranvoye jusque a ce qu&#039;on le rapelle.
+
+~~~PROPOS CONTRE LA RELIGION
+
+&gt;R.Consist. 8, f. 41v (3 août 1553): Anbroys Bogier de Burges, cordannier; Becad Cantagrelle d&#039;Auvergne, grodan, contre Jehan Buttin, grieur.
+    Deposent qu&#039;il n&#039;y a pas longtenps que eux beuvant chez le Pattu, les ungs qui estient leans maintenoit la messe, et les austres non.  Et entre les austres ung [crossed out: nommé Martin le] grieur le frappatz ledit Anbroy en la joue, disant qui se n&#039;estoit pas a luy de desputer de tel cas et que tous ceux que mesderent de la messe y estoent meschant, et que le Pape et cardinaux sont gens de biens.  Aussi fust injurier par l&#039;ostesse et blessé, luy disant «mechant, banyt», avec austres iniures. Ledit Becad a dit comme dessus, reservé qu&#039;il ne sçayt le nom et que les cardinaux estient gens de bien. Et s&#039;il estient venu ici pour l&#039;Evangille, de Jehan Pynotz, et pour descobert.
+
+  --&gt;R.Consist. 8, f. 42 (3 août 1553): La femme de Tivent Pattu.
+    Remonstré du dessus contre Martin, grieur, et que ont testiffies les susnommes, y ny par espres, et leur dit bien que se allassent battre austre pars.  A la fin a aussi bien confessé qu&#039;elle ne vast gayre souvent aux sermons. Advis: que l&#039;on luy confronte les tesmoings, se que y luy ont soutenu.  Toujours y nye par espres.  Advis: que l&#039;on la remeste devant Messieurs pour enfonssé la matiere, et qu&#039;elle ne vast point aux sermons.
+
+  --&gt;R.Consist. 8, f. 45 (10 août 1553): Martin Lechiere, grieur.
+    Remonstré denpuys quant y est en cest ville, dictz qu&#039;il a environ dix ans, et n&#039;az encour habitation.  Et nye avoir maintenu la messe chez le Pattu, comme jeudi en fust deposé.  Aussi de tenir maulvays  traint a sa femme et l&#039;avoir vollu tuer.  Item nye du scandalle qu&#039;il fist, cause de pallardé au lieux de Troynex.  Que pour jeudi y retorne ici et l&#039;on apelle les tesmongs et ceux que ballerat Maistre Mathieu, ministre.
+
+~~~ADULTÈRE; Jacquema de La Pira (#7912)
+
+&gt;R.Consist. 8, f. 49v (29 août 1553): Jaquema, femme de Claude De La Pira de Esvordes.
+    Remonstré s&#039;il n&#039;est pas vray qu&#039;elle a maulvays bruyt en son village dont elle est, et espres d&#039;ung nommé Martin le Grieur.  Confesse bien que y est vray, et a grand tort convaincue par Maistre Matieu, ministre, qu&#039;elle avoit retires de nuyt ung homme, et y fust trouver par ses cousins Gro Jehan Mestra et Selvestre, et austres choses.  L&#039;on luy a confronter son mari, lequel a dit estre chose veritable que l&#039;on l&#039;en a eu adverti.  Toutesfois il ne luy a point trouvé en faulte, et luy a maintenu qu&#039;elle luy a eu dit que ung l&#039;avoit eu presenter des escus pour avoir sa compagnie. A la fin a confessé de Collonbi, et denpuys a aussi bien confessé que une fois Françoys Bonjean luy ballat deux escus, et denpuys les luy rendit.  Aussi dict que Jehan Boyteux l&#039;a aussi solliciter, et austres escuses. Advis: qu&#039;elle retorne ici pour jeudi, et faire apellé lesdits Collonbi, Gro Jehan, et Françoys Clert.  Aussi ledit Martin remis.
+
+~~~Follow-up to Jean Buttin case, f. 41v above
+  --&gt;R.Consist. 8, f. 50 (31 août 1553): Martin le Grieur, Jehan Ruche, Becad Cantecrelle.
+    L&#039;ont dictz que ce n&#039;est pas luy duquel en ont deposé desja le 3 de aoust, an present.  Advis: que Jehan Buttin soit apellé pour jeudi, lequel est...
+
+~~~ADULTÈRE with Marguerite des Bois (née de La Porte) (#9425)
+&gt;R.Consist. 8, f. 62v (26 octobre 1553): Nycollas Sorre [et] sa femme contre Martin Lechiere.
+    Deposent que Jehan Blanc leur vint advertir qu&#039;il avoit apercu quelque inssollence d&#039;une gageure, la femme dudit Martin, et la lingiere, laquelle avoit plus beaux coutz.  Et ladicte lingiere est seur d&#039;ung nommé Olivier, et fust commis a leur advis pour faire la visitation ledit Martin, et que ung nommé Denys de Legiee en seroit mieux desposer. Advis: que pour jeudi l&#039;on apelle ledit Denys.
+
+  --&gt;R.Consist. 8, f. 64v (2 novembre 1553): Denys Lechiere, charpentier, contre Martin Lechiere, grieur.
+    Depose sus la proposite de Jehan Blanc estre vray que une fois, luy estant au soupper chez ledit Martin son cousin y a environ ung moys, que une nommé Marguerite, qu&#039;est lingiere et de Tornierre, dictz les parrolles infames a dire, et estoit present ung austre, que ladicte voulloit gager cinq solz qu&#039;elle avoit le cout plus joli que la femme dudit Martin, et ne voulloit austre que y visitasse que ledit Martin, et a la forme dudit billiet.
+
+  --&gt;R.Consist. 8, f. 67 (16 novembre 1553): Marguerite de La Porte, femme de Oliviers Duboys, grieur.
+    Ditz qu&#039;il a environ deux ans que son mari l&#039;a laissé, et y avoir quattre ans qu&#039;elle demeure en ceste ville pour la parrolle de Dieu.  Confesse estre vray qu&#039;elle a eu ayder a Martin Le Grieur, et que sependant ledit Martin l&#039;a eu presenter ung teston et deux verges d&#039;argent qu&#039;il avoit en sa borse en la sollicitant de son deshonneur.  Plus dictz qu&#039;elle a eu couches l&#039;espace de 4 jour et une nuyt, luy estant en chemisse et elle couches, et que y avoit envoyé ladicte femme en quelque lieux, venist la trouvé.  Sependant venist ladicte femme	
+VIII, 67v
+que se couroissoit, et allors la frappat, dont en firent beaucoupt de propos, disant que s&#039;il luy estoit tout ung de une austre ville comme de ceste-ci.  A la fin aussi bien confesse la gageure de la visitation de leurs parties onteuse, comme est contenu en ung billiet. Item l&#039;estre allé trouves en son lictz, luy disant qu&#039;il allasse couches avec sa femme, et il luy dit qu&#039;il aymeroyt mieux qu&#039;elle y allasse.  Et quant a la gageure, dictz que ledit Martin apellat a sadicte femme «cul escorches», et entratz dans ung cabinet pour visiter laquelle auroit le coutz plus honnestes. Et avient gages une espaule de mouton, et le incitatz elle-mesme faire le rapport qu&#039;elle avoit gaygnes.  Item confesse que ledit l&#039;est bien eu allé trouves et ce estre getter sus le lictz, la tatant ses tetins.  Advis: que presentement l&#039;on aye ledit Martin et sa femme.
+
+
+&gt;R.Consist. 8, f. 67v (16 novembre 1553): Ladicte femme de Martin Lechiere, Jehanne, fille de Jehan de La Tola de Peyssiez.
+    Remonstré ou est son mari, dictz ne sçavoir ou est son mari; toutesfois qu&#039;il besogne en ceste ville.  Item dictz que par plusieurs fois ladicte luy disoit si elle ne voulloit pas consentir a couches avec sondit mari, et disoit que non, disant en oultre qu&#039;elle a eu esté battue de sondit mari et que ladicte Marguerite est eu aller trouves sondit marri et elle, estant au foyes, escusant en tout sondit marri.  Et quant a la gageure, dictz austrement que ladicte Marguerite.  A dit estre bien vray qu&#039;elle voulloit que son mari visitasse lesdits membres, et avient gages ut supra.  Advis: que avant que proceder plus oultre, que Messieurs en soyent pries d&#039;en purges leur ville, et advertir ladicte a en advertir son mari. Et que la chose est asses declaires, avec les choses que tant par ci-devant en a esté dictz.
+</textarea>
+<br/>
+<input type="button" value="Split Annotation" onclick="splitAnnotation();">
+<input type="button" value="Add Using Selection" onclick="addUsingSelection();">
+
+
+		
+			<input type="hidden" value="0" id="theValue2" />
+			<p><a href="javascript:;" onclick="addEvent2();">Add Some Elements</a></p>
+			<div id="myDiv2"> </div>
+		
+			Quick Brown Fox
+			<br/>
+			<textarea name="oriText" rows="10" cols="60">Hello World</textarea><br/>
+			
+			<br/>
+			<input type="button" value="Copy Text" onclick="copySelection(document.formCopyArea.oriText, document.formCopyArea.pasteArea);">
+			
+			<br/>
+			<textarea name="pasteArea" cols="30" rows="10">Sample</textarea>
+			
+			<br/>
+			<input type="text" name="keyStat" >
+			
+			
+
+			
+		</form>
+		
+		
+		<script language="javascript">
+			function copyTextHere()
+			{
+				//document.formCopyArea.pasteArea.value = document.formCopyArea.oriText.getSelection();
+				//document.formCopyArea.pasteArea.value = keyDown.toString();
+				
+				document.formCopyArea.pasteArea.value = document.selection.createRange();
+				document.formCopyArea.pasteArea.value.execCommand("Copy");
+
+			}
+			
+			
+			function copySelection(myField, myValue)
+			{
+			
+				
+				var startPos  = myField.selectionStart;
+				var endPos    = myField.selectionEnd;
+				if( startPos == endPos)
+				{
+					alert("Please select some text from the text box.");
+				}
+				myValue.value = startPos + ":" + endPos + ":" + myField.value.substring(startPos, endPos);
+				return;
+				
+				
+				/*
+				var txt = '';
+				var foundIn = '';
+				if (window.getSelection)
+				{
+						txt = window.getSelection();
+						foundIn = 'window.getSelection()';
+				}
+				else if (document.getSelection)
+				{
+						txt = document.getSelection();
+						foundIn = 'document.getSelection()';
+				}
+				else if (document.selection)
+				{
+						txt = document.selection.createRange().text;
+						foundIn = 'document.selection.createRange()';
+				}
+				else 
+				{
+					//return;
+					foundIn = "Not found";
+				}
+				
+				// document.forms[0].selectedtext.value = 'Found in: ' + foundIn + '\n' + txt;
+				myValue.value = 'Found in: ' + foundIn + '\n' + txt;
+				
+				*/
+			}
+			
+		</script>
+		
+		
+		<script language="javascript">
+			function keyDown()
+			{
+				document.formCopyArea.keyStat.value = Date.getSeconds + " :";
+				if( Event.ctrlKey == true )
+				{
+					document.formCopyArea.keyStat.value = "Ctrl   : ";
+				}
+				else
+				{
+					document.formCopyArea.keyStat.value = "NoCtrl : ";
+				}
+				
+				if( Event.shiftKey == true )
+				{
+					document.formCopyArea.keyStat.value += "Shift   : ";
+				}
+				else
+				{
+					document.formCopyArea.keyStat.value += "NoShift : ";
+				}
+			}
+		</script>	</body>
+</html>
+
+
+
+<!--
+	Add and Remove HTML elements dynamically with Javascript
+	========================================================
+	http://www.dustindiaz.com/add-and-remove-html-elements-dynamically-with-javascript/
+	http://www.dustindiaz.com/basement/addRemoveChild.html   (Demoe)
+-->

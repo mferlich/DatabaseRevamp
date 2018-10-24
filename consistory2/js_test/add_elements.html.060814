@@ -1,0 +1,208 @@
+<html>
+	<head>
+		<title>Test Add/Remove HTML Elements JavaScript</title>
+		
+		<style type="text/css">  
+			.divcrime 
+			{ 
+				border: 1px solid rgb(153, 0, 0); 
+				background-color: rgb(255, 255, 204); 
+			}
+			
+			.closebox 
+			{ 
+				border: 1px solid rgb(153, 0, 0); 
+				max-width: 10pt; 
+				max-height: 10pt; 
+				font-size: 10pt; 
+				text-align: center; 
+				float: right; 
+				position: 
+				relative; 
+			}
+		</style>
+		
+		<script type="text/javascript">
+		<!--
+		
+		function addEvent()
+		{
+			var ni   =  document.getElementById('myDiv'   );
+			var numi =  document.getElementById('theValue');
+			var num  = (document.getElementById("theValue").value -1)+ 2;
+			numi.value = num;
+			var divIdName = "my"+num+"Div";
+			var newdiv = document.createElement('div');
+			newdiv.setAttribute("id",divIdName);
+			newdiv.innerHTML = "Element Number "+num+" has been added! <a href=\"javascript:;\" onclick=\"removeEvent(\'"+divIdName+"\')\">Remove the div &quot;"+divIdName+"&quot;</a>";
+			ni.appendChild(newdiv);
+		}
+
+		function removeEvent(divNum)
+		{
+			var d = document.getElementById('myDiv');
+			var olddiv = document.getElementById(divNum);
+			d.removeChild(olddiv);
+		}
+		
+		
+		
+		
+		function addEvent2()
+		{
+			var ni   =  document.getElementById('myDiv2'   );
+			var numi =  document.getElementById('theValue2');
+			var num  = (document.getElementById("theValue2").value -1)+ 2;
+			numi.value = num;
+			var divIdName = "my"+num+"Div2";
+			var newdiv = document.createElement('div');
+			newdiv.setAttribute("id",divIdName);
+			newdiv.setAttribute("class", "divcrime");
+			newdiv.innerHTML = 
+				"<div class=\"closebox\"><a href=\"javascript:;\" onclick=\"removeEvent2(\'"+divIdName+"\')\">X</a></div>" +
+				"<select name=\"cmbCrimeTag\">" +
+					"<option value=\"1\">One</option>" +
+					"<option value=\"2\">Two</option>" +
+					"<option value=\"3\">Three</option>" +
+					"<option value=\"4\">Four</option>" +
+				"</select>" +
+				"<br/>" +
+				"<textarea name=\"annotation\" rows=\"5\" cols=\"50\">Hello World</textarea>" +
+				"<a href=\"javascript:;\" onclick=\"removeEvent2(\'"+divIdName+"\')\">Remove &quot;"+divIdName+"&quot;</a>";
+			
+			ni.appendChild(newdiv);
+		}
+
+		function removeEvent2(divNum)
+		{
+			var d = document.getElementById('myDiv2');
+			var olddiv = document.getElementById(divNum);
+			d.removeChild(olddiv);
+		}
+		
+		//-->
+		</script>
+	</head>
+
+	<body onKeyDown="keyDown()">
+		
+		<input type="hidden" value="0" id="theValue" />
+		<p><a href="javascript:;" onclick="addEvent();">Add Some Elements</a></p>
+		<div id="myDiv"></div>
+		
+		Little Red Riding Hood
+		<br/>
+		<form method="post" action="" name="formCopyArea" onsubmit="copyTextHere();">
+		
+			<input type="hidden" value="0" id="theValue2" />
+			<p><a href="javascript:;" onclick="addEvent2();">Add Some Elements</a></p>
+			<div id="myDiv2"> </div>
+		
+			Quick Brown Fox
+			<br/>
+			<textarea name="oriText" rows="10" cols="60">Hello World</textarea><br/>
+			
+			<br/>
+			<input type="button" value="Copy Text" onclick="copySelection(document.formCopyArea.oriText, document.formCopyArea.pasteArea);">
+			
+			<br/>
+			<textarea name="pasteArea" cols="30" rows="10">Sample</textarea>
+			
+			<br/>
+			<input type="text" name="keyStat" >
+		</form>
+		
+		
+		<script language="javascript">
+			function copyTextHere()
+			{
+				//document.formCopyArea.pasteArea.value = document.formCopyArea.oriText.getSelection();
+				//document.formCopyArea.pasteArea.value = keyDown.toString();
+				
+				document.formCopyArea.pasteArea.value = document.selection.createRange();
+				document.formCopyArea.pasteArea.value.execCommand("Copy");
+
+			}
+			
+			
+			function copySelection(myField, myValue)
+			{
+			
+				
+				var startPos  = myField.selectionStart;
+				var endPos    = myField.selectionEnd;
+				if( startPos == endPos)
+				{
+					alert("Please select some text from the text box.");
+				}
+				myValue.value = startPos + ":" + endPos + ":" + myField.value.substring(startPos, endPos);
+				return;
+				
+				
+				/*
+				var txt = '';
+				var foundIn = '';
+				if (window.getSelection)
+				{
+						txt = window.getSelection();
+						foundIn = 'window.getSelection()';
+				}
+				else if (document.getSelection)
+				{
+						txt = document.getSelection();
+						foundIn = 'document.getSelection()';
+				}
+				else if (document.selection)
+				{
+						txt = document.selection.createRange().text;
+						foundIn = 'document.selection.createRange()';
+				}
+				else 
+				{
+					//return;
+					foundIn = "Not found";
+				}
+				
+				// document.forms[0].selectedtext.value = 'Found in: ' + foundIn + '\n' + txt;
+				myValue.value = 'Found in: ' + foundIn + '\n' + txt;
+				
+				*/
+			}
+			
+		</script>
+		
+		
+		<script language="javascript">
+			function keyDown()
+			{
+				document.formCopyArea.keyStat.value = Date.getSeconds + " :";
+				if( Event.ctrlKey == true )
+				{
+					document.formCopyArea.keyStat.value = "Ctrl   : ";
+				}
+				else
+				{
+					document.formCopyArea.keyStat.value = "NoCtrl : ";
+				}
+				
+				if( Event.shiftKey == true )
+				{
+					document.formCopyArea.keyStat.value += "Shift   : ";
+				}
+				else
+				{
+					document.formCopyArea.keyStat.value += "NoShift : ";
+				}
+			}
+		</script>
+	</body>
+</html>
+
+
+
+<!--
+	Add and Remove HTML elements dynamically with Javascript
+	========================================================
+	http://www.dustindiaz.com/add-and-remove-html-elements-dynamically-with-javascript/
+	http://www.dustindiaz.com/basement/addRemoveChild.html   (Demoe)
+-->

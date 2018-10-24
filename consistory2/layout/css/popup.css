@@ -1,0 +1,6 @@
+body {background-color: #ffc;}
+.help {font-size:small; text-align: center;}
+.heading {margin:0; padding:0; text-align:center;}
+input {margin-left: 50px;}
+.delete_button {color: Black; background-color: LightYellow;}
+.submit_button {font-weight: bold; color: Black; background-color: LightGreen;}

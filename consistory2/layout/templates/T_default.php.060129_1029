@@ -1,0 +1,64 @@
+<?php
+echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
+//echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . "\n";
+echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">' . "\n";
+echo '<head>';
+echo '<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />';
+$page_title = (!empty($page_title)) ? $page_title : "Geneva Consistory Project";
+echo '<title>' . $page_title . '</title>';
+
+$content = (!empty($content)) ? $content : '';
+
+// style sheets
+echo '<link rel="stylesheet" type="text/css" href="'. WEB_ROOT . DIR_CSS .'default.css" />';
+if (!empty($user->resolution) && $user->resolution == "800")
+{
+    echo  '<link rel="stylesheet" type="text/css" href="'. WEB_ROOT . DIR_CSS .'800.css" />';
+}
+
+if (!empty($supplemental_stylesheet))
+{
+  echo $supplemental_stylesheet;
+}
+
+// javascript
+
+if (!empty($supplemental_js_inline))
+{
+   echo "\n" . '<script type="text/javascript">' . "\n"
+       . $supplemental_js_inline
+       . "\n</script>\n";
+}
+
+if (isset($supplemental_js_files[0]) and !empty($supplemental_js_files[0]))
+{
+    foreach ($supplemental_js_files as $filename)
+    {
+       echo "\n" . '<script type="text/javascript" src="' . WEB_ROOT . DIR_JS . $filename . '"></script>';
+    }
+}
+
+// end HEAD, start BODY
+echo '</head><body>';
+
+include(DOC_ROOT . DIR_LAYOUT . 'nav_bar.inc.php');
+
+// commented by IDJ 060802
+//$content_type = mb_detect_encoding($content, "UTF-8");
+//if (mb_detect_encoding($content, "UTF-8") != "UTF-8")
+//{
+//  $content = mb_convert_encoding($content, "UTF-8", "ISO-8859-1");
+//}
+echo $content;
+
+echo '</body></html>';
+
+if (DEBUG)
+{
+   include('debug.inc.php');
+   echo "<h1>Content is " . $content_type . "</h1>";
+   echo "<h1>Supplementa JS</h1><pre>";
+   print_r($supplemental_js_files);
+   echo "</pre>";
+}
+?>

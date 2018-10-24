@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>Test JavaScript 1</title>
+	</head>
+
+	<body onKeyDown="keyDown()">
+		
+		Little Red Riding Hood
+		<br/>
+		<form method="post" action="" name="formCopyArea" onsubmit="copyTextHere();">
+			Quick Brown Fox
+			<br/>
+			<textarea name="oriText" rows="10" cols="60">Hello World</textarea><br/>
+			
+			<br/>
+			<input type="button" value="Copy Text" onclick="copySelection(document.formCopyArea.oriText, document.formCopyArea.pasteArea);">
+			
+			<br/>
+			<textarea name="pasteArea" cols="30" rows="10">Sample</textarea>
+			
+			<br/>
+			<input type="text" name="keyStat" >
+		</form>
+		
+		
+		<script language="javascript">
+			function copyTextHere()
+			{
+				//document.formCopyArea.pasteArea.value = document.formCopyArea.oriText.getSelection();
+				//document.formCopyArea.pasteArea.value = keyDown.toString();
+				
+				document.formCopyArea.pasteArea.value = document.selection.createRange();
+				document.formCopyArea.pasteArea.value.execCommand("Copy");
+
+			}
+			
+			
+			function copySelection(myField, myValue)
+			{
+			
+				
+				var startPos  = myField.selectionStart;
+				var endPos    = myField.selectionEnd;
+				if( startPos == endPos)
+				{
+					alert("Please select some text from the text box.");
+				}
+				myValue.value = startPos + ":" + endPos + ":" + myField.value.substring(startPos, endPos);
+				return;
+				
+				
+				/*
+				var txt = '';
+				var foundIn = '';
+				if (window.getSelection)
+				{
+						txt = window.getSelection();
+						foundIn = 'window.getSelection()';
+				}
+				else if (document.getSelection)
+				{
+						txt = document.getSelection();
+						foundIn = 'document.getSelection()';
+				}
+				else if (document.selection)
+				{
+						txt = document.selection.createRange().text;
+						foundIn = 'document.selection.createRange()';
+				}
+				else 
+				{
+					//return;
+					foundIn = "Not found";
+				}
+				
+				// document.forms[0].selectedtext.value = 'Found in: ' + foundIn + '\n' + txt;
+				myValue.value = 'Found in: ' + foundIn + '\n' + txt;
+				
+				*/
+			}
+			
+		</script>
+		
+		
+		<script language="javascript">
+			function keyDown()
+			{
+				document.formCopyArea.keyStat.value = Date.getSeconds + " :";
+				if( Event.ctrlKey == true )
+				{
+					document.formCopyArea.keyStat.value = "Ctrl   : ";
+				}
+				else
+				{
+					document.formCopyArea.keyStat.value = "NoCtrl : ";
+				}
+				
+				if( Event.shiftKey == true )
+				{
+					document.formCopyArea.keyStat.value += "Shift   : ";
+				}
+				else
+				{
+					document.formCopyArea.keyStat.value += "NoShift : ";
+				}
+			}
+		</script>
+	</body>
+</html>

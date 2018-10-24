@@ -1,0 +1,13 @@
+.long {width: 13em;}
+.labelcol, .datacol {width: 6em;}
+.datacol {width: 11em;}
+.quicksearch p {width: 66%;}
+.quicksearch p.left {width: 33%;}
+.user-settings span {width: 7em;}
+.user-settings input {width: 7em;}
+
+.fullsearch p.short {width: 5em;}
+.fullsearch textarea {width: 80%;}
+
+.user-filters {width: 53%;}
+
